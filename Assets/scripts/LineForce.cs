@@ -11,17 +11,17 @@ public class LineForce : MonoBehaviour
 	private bool isIdle;
 	private bool isAiming;
 
-	private Rigidbody rigidbody;
+	private Rigidbody ball;
 
 	private void Awake(){
-		rigidbody = GetComponent<Rigidbody>();
+		ball = GetComponent<Rigidbody>();
 
 		isAiming = false;
 		lineRenderer.enabled = false;
 	}
 	
 	private void Update(){
-		if(rigidbody.velocity.magnitude < stopVelocity){
+		if(ball.velocity.magnitude < stopVelocity){
 			Stop();
 		}
 		ProcessAim();
@@ -50,6 +50,10 @@ public class LineForce : MonoBehaviour
 		}
 	}
 
+	public bool IsAiming(){
+		return isAiming;
+	}
+
 	private void Shoot(Vector3 worldPoint){
 		isAiming = false;
 		lineRenderer.enabled = false;
@@ -57,7 +61,7 @@ public class LineForce : MonoBehaviour
 		Vector3 horizontalWorldPoint = new Vector3(worldPoint.x, worldPoint.y, worldPoint.z);
 		Vector3 direction = (horizontalWorldPoint - transform.position).normalized;
 		float strength = Vector3.Distance(transform.position, horizontalWorldPoint);
-		rigidbody.AddForce(direction * strength * shotPower);
+		ball.AddForce(direction * strength * shotPower);
 	}
 
 	private void DrawLine(Vector3 worldPoint){
@@ -69,8 +73,8 @@ public class LineForce : MonoBehaviour
 	}
 
 	private void Stop(){
-		rigidbody.velocity = Vector3.zero;
-		rigidbody.angularVelocity = Vector3.zero;
+		ball.velocity = Vector3.zero;
+		ball.angularVelocity = Vector3.zero;
 		isIdle = true;
 	}
 	
