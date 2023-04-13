@@ -12,15 +12,17 @@ public class LineForce : MonoBehaviour
 	private bool isAiming;
 
 	private Rigidbody ball;
+	private Renderer cubeRenderer;
 
 	private void Awake(){
 		ball = GetComponent<Rigidbody>();
+		cubeRenderer = GetComponent<Renderer>();
 
 		isAiming = false;
 		lineRenderer.enabled = false;
 	}
 	
-	private void Update(){
+	private void FixedUpdate(){
 		if(ball.velocity.magnitude < stopVelocity){
 			Stop();
 		}
@@ -58,10 +60,13 @@ public class LineForce : MonoBehaviour
 		isAiming = false;
 		lineRenderer.enabled = false;
 
-		Vector3 horizontalWorldPoint = new Vector3(worldPoint.x, worldPoint.y, worldPoint.z);
+		Vector3 horizontalWorldPoint = new Vector3(worldPoint.x, transform.position.y, worldPoint.z);
 		Vector3 direction = (horizontalWorldPoint - transform.position).normalized;
 		float strength = Vector3.Distance(transform.position, horizontalWorldPoint);
+		strength = Mathf.Min(strength, 40);
 		ball.AddForce(direction * strength * shotPower);
+		isIdle = false;
+		cubeRenderer.material.SetColor("_Color", Color.red);
 	}
 
 	private void DrawLine(Vector3 worldPoint){
@@ -76,6 +81,7 @@ public class LineForce : MonoBehaviour
 		ball.velocity = Vector3.zero;
 		ball.angularVelocity = Vector3.zero;
 		isIdle = true;
+		cubeRenderer.material.SetColor("_Color", Color.green);
 	}
 	
 	private Vector3? CastMouseClickRay(){
