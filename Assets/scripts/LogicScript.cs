@@ -13,6 +13,17 @@ public class LogicScript : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void lvl1()
+    {
+        SceneManager.LoadScene("level_1");
+    }
+
+    public void sample()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
+
     public void gameOver()
     {
         GameOverScreen.SetActive(true);
