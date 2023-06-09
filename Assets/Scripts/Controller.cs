@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,9 +10,11 @@ public class Controller : MonoBehaviour
     private Rigidbody rb;
     [SerializeField] private Slider slider;
     [SerializeField] private LineRenderer ballFront;
+    [SerializeField] private TextMeshProUGUI shootText;
     private bool shot = false;
     private Vector3 lineStartVector;
     private Vector3 lineEndVector;
+    private float zTime;
 
     void Start()
     {
@@ -36,19 +39,40 @@ public class Controller : MonoBehaviour
     {
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Z Axis");
+        if (z > -0.95)
+        {
+            zTime += Time.fixedDeltaTime;
+            if (zTime >= 1)
+            {
+                zTime = 1;
+                if (!shot)
+                {
+                    shootText.text = "CELOWANIE";
+                }
+            }
+        }
+        else
+        {
+            zTime = 0;
+        }
+        if (zTime <= 0.3 && !shot)
+        {
+            shootText.text = "STRZELANIE";
+        }
         if (!shot)
         {
-            if (Input.GetButton("Fire1"))
+            if (Input.GetButton("Fire3"))
             {
                 Shoot();
             }
-            else if (Mathf.Abs(h) > 0.3)
+            else if (Mathf.Abs(h) > 0.3 && zTime >= 1)
             {
-                ballFront.transform.Rotate(0, h, 0);
+                ballFront.transform.Rotate(0, h * 0.7f, 0);
             }
-            else if (Mathf.Abs(v) > 0.3)
+            else if (Mathf.Abs(v) > 0.3 && zTime >= 1)
             {
-                shotStrength += v * 0.03f;
+                shotStrength += v * 0.01f;
             }
         }
         else if (rb.velocity.magnitude < 1)
@@ -68,6 +92,7 @@ public class Controller : MonoBehaviour
         rb.AddForce(1000f * Mathf.Pow(shotStrength + 1, 2) * shotStrength * ballFront.transform.forward);
         shot = true;
         ballFront.enabled = false;
+        shootText.text = "STRZA£";
     }
     private void Stop()
     {
