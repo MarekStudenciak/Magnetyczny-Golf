@@ -18,6 +18,31 @@ public class LogicScript : MonoBehaviour
         SceneManager.LoadScene("level_1");
     }
 
+    public void l1()
+    {
+        SceneManager.LoadScene("1");
+    }
+
+    public void l2()
+    {
+        SceneManager.LoadScene("2");
+    }
+
+    public void l3()
+    {
+        SceneManager.LoadScene("3");
+    }
+
+    public void l4()
+    {
+        SceneManager.LoadScene("4");
+    }
+
+    public void l5()
+    {
+        SceneManager.LoadScene("5");
+    }
+
     public void sample()
     {
         SceneManager.LoadScene("SampleScene");
