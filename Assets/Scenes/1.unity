@@ -2523,10 +2523,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1412040248}
     - target: {fileID: 3374316217721967861, guid: 932811e1cb847284ea3c8106daa7ddb7, type: 3}
-      propertyPath: shootText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3374316217721967861, guid: 932811e1cb847284ea3c8106daa7ddb7, type: 3}
       propertyPath: counterText
       value: 
       objectReference: {fileID: 292263733}

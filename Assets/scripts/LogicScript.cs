@@ -22,11 +22,11 @@ public class LogicScript : MonoBehaviour
 
         if(Input.GetButton("Fire4")){
         //if(Input.GetKey(KeyCode.Space)){
-            if(restartReadiness>0 && restartReadiness<950){
+            if(restartReadiness>0 && restartReadiness<450){
                 restartGame();
             } else {
                 RestartPrompt.SetActive(true);
-                restartReadiness = 1000;
+                restartReadiness = 500;
             }
         }
 

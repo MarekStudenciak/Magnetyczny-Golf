@@ -20,6 +20,8 @@ public class Controller : MonoBehaviour
     private Vector3 lineEndVector;
     private float zTime;
     private int shotcounter = 0;
+    float hMag = 1;
+    float vMag = 1;
 
     void Start()
     {
@@ -46,8 +48,6 @@ public class Controller : MonoBehaviour
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Z Axis");
-        float hMag = 1;
-        float vMag = 1;
         if (z > -0.95)
         {
             zTime += Time.fixedDeltaTime;
