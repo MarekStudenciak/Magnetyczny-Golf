@@ -20,6 +20,8 @@ public class Controller : MonoBehaviour
     private Vector3 lineEndVector;
     private float zTime;
     private int shotcounter = 0;
+    float hMag = 1;
+    float vMag = 1;
 
     void Start()
     {
@@ -46,8 +48,6 @@ public class Controller : MonoBehaviour
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Z Axis");
-        float hMag = 1;
-        float vMag = 1;
         if (z > -0.95)
         {
             zTime += Time.fixedDeltaTime;
@@ -89,6 +89,11 @@ public class Controller : MonoBehaviour
                 shotStrength += v * 0.003f * vMag;
                 hMag = 1;
                 vMag = Mathf.Clamp(vMag + 0.05f, 1, 3);
+            }
+            else
+            {
+                hMag = 1;
+                vMag = 1;
             }
         }
         else if (rb.velocity.magnitude < 1)

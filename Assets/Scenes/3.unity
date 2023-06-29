@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2248,6 +2248,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3629666720164435991, guid: 01a5826504c87d7439c9110b6c2abd58, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01a5826504c87d7439c9110b6c2abd58, type: 3}
 --- !u!1 &1797247489
@@ -2788,21 +2792,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1412040248}
     - target: {fileID: 3374316217721967861, guid: 932811e1cb847284ea3c8106daa7ddb7, type: 3}
-      propertyPath: shootText
-      value: 
-      objectReference: {fileID: 8193324272855247008}
-    - target: {fileID: 3374316217721967861, guid: 932811e1cb847284ea3c8106daa7ddb7, type: 3}
       propertyPath: counterText
       value: 
       objectReference: {fileID: 8193324272855247009}
-    - target: {fileID: 4218311791273052716, guid: 932811e1cb847284ea3c8106daa7ddb7, type: 3}
-      propertyPath: logic
+    - target: {fileID: 3374316217721967861, guid: 932811e1cb847284ea3c8106daa7ddb7, type: 3}
+      propertyPath: shotStateSprite
       value: 
-      objectReference: {fileID: 948367007}
-    - target: {fileID: 4218311791273052716, guid: 932811e1cb847284ea3c8106daa7ddb7, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8193324272855247008}
     - target: {fileID: 4218311791273052719, guid: 932811e1cb847284ea3c8106daa7ddb7, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -2851,12 +2847,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
-    - target: {fileID: 4218311791273052725, guid: 932811e1cb847284ea3c8106daa7ddb7, type: 3}
-      propertyPath: m_TagString
-      value: Ball
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4218311791273052716, guid: 932811e1cb847284ea3c8106daa7ddb7, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 932811e1cb847284ea3c8106daa7ddb7, type: 3}
 --- !u!4 &5956771924807217015
 Transform:
@@ -3087,13 +3078,13 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: d143a29bd7898c3479bfa02df33cd4bf, type: 3}
 --- !u!114 &8193324272855247008 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3452097039304104902, guid: d143a29bd7898c3479bfa02df33cd4bf, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2056716815, guid: d143a29bd7898c3479bfa02df33cd4bf, type: 3}
   m_PrefabInstance: {fileID: 8193324272855247007}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &8193324272855247009 stripped
