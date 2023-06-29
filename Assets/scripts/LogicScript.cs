@@ -7,6 +7,30 @@ using UnityEngine.SceneManagement;
 public class LogicScript : MonoBehaviour
 {
     public GameObject GameOverScreen;
+    public GameObject RestartPrompt;
+    int restartReadiness = 0;
+
+    void FixedUpdate()
+    {
+        if(restartReadiness>0){
+            restartReadiness -= 1;
+        }
+
+        if(restartReadiness == 1){
+            RestartPrompt.SetActive(false);
+        }
+
+        if(Input.GetButton("Fire4")){
+        //if(Input.GetKey(KeyCode.Space)){
+            if(restartReadiness>0 && restartReadiness<950){
+                restartGame();
+            } else {
+                RestartPrompt.SetActive(true);
+                restartReadiness = 1000;
+            }
+        }
+
+    }
 
     public void restartGame()
     {
@@ -47,7 +71,6 @@ public class LogicScript : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
-
 
     public void gameOver()
     {

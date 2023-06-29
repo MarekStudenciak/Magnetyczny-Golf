@@ -11,10 +11,12 @@ public class Controller : MonoBehaviour
     [SerializeField] private Slider slider;
     [SerializeField] private LineRenderer ballFront;
     [SerializeField] private TextMeshProUGUI shootText;
+    [SerializeField] private TextMeshProUGUI counterText;
     private bool shot = false;
     private Vector3 lineStartVector;
     private Vector3 lineEndVector;
     private float zTime;
+    private int shotcounter = 0;
 
     void Start()
     {
@@ -24,6 +26,7 @@ public class Controller : MonoBehaviour
     }
     private void Update()
     {
+        counterText.text = shotcounter.ToString();
         RaycastHit hit;
         Vector3 vec = ballFront.transform.TransformPoint(lineStartVector - new Vector3(0, 0, 0.1f));
         if (Physics.Raycast(vec, ballFront.transform.forward, out hit, (lineEndVector - lineStartVector).magnitude * shotStrength))
@@ -91,8 +94,10 @@ public class Controller : MonoBehaviour
     {
         rb.AddForce(1000f * Mathf.Pow(shotStrength + 1, 2) * shotStrength * ballFront.transform.forward);
         shot = true;
+        shotcounter += 1;
         ballFront.enabled = false;
-        shootText.text = "STRZA£";
+        shootText.text = "STRZA≈Å";
+        
     }
     private void Stop()
     {
