@@ -1367,6 +1367,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gameoverrestart
       objectReference: {fileID: 0}
+    - target: {fileID: 50314049910404463, guid: 05efc91cdd6cdc444a6d2d2e13b7a6c3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05efc91cdd6cdc444a6d2d2e13b7a6c3, type: 3}
 --- !u!1001 &810411208530809649

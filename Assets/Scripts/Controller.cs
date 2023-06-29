@@ -90,6 +90,11 @@ public class Controller : MonoBehaviour
                 hMag = 1;
                 vMag = Mathf.Clamp(vMag + 0.05f, 1, 3);
             }
+            else
+            {
+                hMag = 1;
+                vMag = 1;
+            }
         }
         else if (rb.velocity.magnitude < 1)
         {
