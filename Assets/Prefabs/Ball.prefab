@@ -270,5 +270,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 0}
   ballFront: {fileID: 0}
-  shootText: {fileID: 0}
+  shotStateSprite: {fileID: 0}
   counterText: {fileID: 0}
+  stateShot: {fileID: 21300000, guid: b4cd1e7fe76cef54cafa83bd0c0093b7, type: 3}
+  stateAim: {fileID: 21300000, guid: 6ce28ac9687200346a7769b5d88ffa8d, type: 3}
+  stateReady: {fileID: 21300000, guid: ae5c1af30a55aa2458042ccb27d084a9, type: 3}

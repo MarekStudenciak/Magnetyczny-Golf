@@ -10,8 +10,11 @@ public class Controller : MonoBehaviour
     private Rigidbody rb;
     [SerializeField] private Slider slider;
     [SerializeField] private LineRenderer ballFront;
-    [SerializeField] private TextMeshProUGUI shootText;
+    [SerializeField] private Image shotStateSprite;
     [SerializeField] private TextMeshProUGUI counterText;
+    [SerializeField] private Sprite stateShot;
+    [SerializeField] private Sprite stateAim;
+    [SerializeField] private Sprite stateReady;
     private bool shot = false;
     private Vector3 lineStartVector;
     private Vector3 lineEndVector;
@@ -43,6 +46,8 @@ public class Controller : MonoBehaviour
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Z Axis");
+        float hMag = 1;
+        float vMag = 1;
         if (z > -0.95)
         {
             zTime += Time.fixedDeltaTime;
@@ -51,7 +56,7 @@ public class Controller : MonoBehaviour
                 zTime = 1;
                 if (!shot)
                 {
-                    shootText.text = "CELOWANIE";
+                    shotStateSprite.sprite = stateAim;
                 }
             }
         }
@@ -61,21 +66,29 @@ public class Controller : MonoBehaviour
         }
         if (zTime <= 0.3 && !shot)
         {
-            shootText.text = "STRZELANIE";
+            shotStateSprite.sprite = stateReady;
+            hMag = 1;
+            vMag = 1;
         }
         if (!shot)
         {
             if (Input.GetButton("Fire3"))
             {
                 Shoot();
+                hMag = 1;
+                vMag = 1;
             }
-            else if (Mathf.Abs(h) > 0.3 && zTime >= 1)
+            else if (Mathf.Abs(h) > 0.2 && zTime >= 1)
             {
-                ballFront.transform.Rotate(0, h * 0.7f, 0);
+                ballFront.transform.Rotate(0, h * 0.3f * hMag, 0);
+                vMag = 1;
+                hMag = Mathf.Clamp(hMag + 0.05f, 1, 3);
             }
-            else if (Mathf.Abs(v) > 0.3 && zTime >= 1)
+            else if (Mathf.Abs(v) > 0.2 && zTime >= 1)
             {
-                shotStrength += v * 0.01f;
+                shotStrength += v * 0.003f * vMag;
+                hMag = 1;
+                vMag = Mathf.Clamp(vMag + 0.05f, 1, 3);
             }
         }
         else if (rb.velocity.magnitude < 1)
@@ -96,8 +109,8 @@ public class Controller : MonoBehaviour
         shot = true;
         shotcounter += 1;
         ballFront.enabled = false;
-        shootText.text = "STRZAŁ";
-        
+        shotStateSprite.sprite = stateShot;
+
     }
     private void Stop()
     {
