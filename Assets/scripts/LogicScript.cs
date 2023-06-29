@@ -8,10 +8,16 @@ public class LogicScript : MonoBehaviour
 {
     public GameObject GameOverScreen;
     public GameObject RestartPrompt;
+    public string nextLevel = "1";
+    bool levelCleared = false;
     int restartReadiness = 0;
 
     void FixedUpdate()
     {
+        if(Input.GetButton("Fire1") && levelCleared){
+            SceneManager.LoadScene(nextLevel);
+        }
+
         if(restartReadiness>0){
             restartReadiness -= 1;
         }
@@ -22,7 +28,7 @@ public class LogicScript : MonoBehaviour
 
         if(Input.GetButton("Fire4")){
         //if(Input.GetKey(KeyCode.Space)){
-            if(restartReadiness>0 && restartReadiness<450){
+            if(levelCleared || (restartReadiness>0 && restartReadiness<450)){
                 restartGame();
             } else {
                 RestartPrompt.SetActive(true);
@@ -67,6 +73,11 @@ public class LogicScript : MonoBehaviour
         SceneManager.LoadScene("5");
     }
 
+    public void mainMenu()
+    {
+        SceneManager.LoadScene("main_menu");
+    }
+
     public void sample()
     {
         SceneManager.LoadScene("SampleScene");
@@ -75,5 +86,6 @@ public class LogicScript : MonoBehaviour
     public void gameOver()
     {
         GameOverScreen.SetActive(true);
+        levelCleared = true;
     }
 }
